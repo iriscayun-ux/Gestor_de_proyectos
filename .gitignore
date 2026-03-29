@@ -1,0 +1,32 @@
+cat <<EOL > .gitignore
+# Archivos de Python
+*.pyc
+*.pyo
+__pycache__/
+
+# Entorno virtual
+venv/
+env/
+ENV/
+
+# Archivos de Django
+*.sqlite3
+*.log
+db.sqlite3
+
+# Archivos de configuración de IDE
+.vscode/
+.idea/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de compilación
+*.egg-info/
+dist/
+build/
+
+# Otros
+*.env
+EOL
