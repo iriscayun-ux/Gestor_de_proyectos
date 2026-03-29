@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}Página no encontrada{% endblock %}
+
+{% block content %}
+<div class="container text-center mt-5">
+
+    <!--Icono de advertencia -->
+    <div class="mb-4">
+        <h1 class="display-1 text-warning">❓</h1>
+        <h2 class="fw-bold">Error 404 - Página no encontrada</h2>
+        <p class="text-muted">
+            Lo sentimos, la página que buscas no existe o fue movida.
+        </p>
+    </div>
+
+    <!-- Botón volver al inicio -->
+    <a href="{% url 'lista_proyectos' %}" class="btn btn-primary btn-lg">
+        ← Volver al inicio
+    </a>
+
+</div>
+{% endblock %}

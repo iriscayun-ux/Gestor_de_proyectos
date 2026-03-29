@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 500px;">
+    
+    <h2 class="text-center mb-4">Registro de Usuario</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label class="form-label">Nombre de usuario</label>
+            {{ form.username }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Contraseña</label>
+            {{ form.password1 }}
+            <div class="form-text">
+                Tu contraseña debe tener al menos 8 caracteres y no ser común.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Confirmar contraseña</label>
+            {{ form.password2 }}
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">
+            Registrarse
+        </button>
+    </form>
+
+    <div class="text-center mt-3">
+        <a href="{% url 'login' %}">
+            ¿Ya tienes cuenta? Inicia sesión
+        </a>
+    </div>
+
+</div>
+{% endblock %}

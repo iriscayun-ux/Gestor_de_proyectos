@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}Iniciar Sesión{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+    <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
+        <h3 class="text-center mb-4">🔑 Iniciar Sesión</h3>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <!-- Usuario -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-4 text-center fw-bold">Usuario</label>
+                <div class="col-8">
+                    {{ form.username }}
+                </div>
+            </div>
+
+            <!-- Contraseña -->
+            <div class="mb-3 row align-items-center">
+                <label class="col-4 text-center fw-bold">Contraseña</label>
+                <div class="col-8">
+                    {{ form.password }}
+                </div>
+            </div>
+
+            {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+{% endif %}
+
+            <!-- Botón Ingresar -->
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary w-50">Ingresar</button>
+            </div>
+        </form>
+
+        <!-- Enlace de registro -->
+        <div class="text-center mt-3">
+            <a href="{% url 'register' %}">¿No tienes cuenta? Regístrate</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

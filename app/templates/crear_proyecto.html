@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}Crear Proyecto{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <!-- CARD crea el contenedor estilo tarjeta -->
+            <div class="card shadow">
+                <div class="card-body">
+
+                    <h3 class="text-center mb-4">📁 Crear Proyecto</h3>
+
+                    <form method="post">
+                        {% csrf_token %}
+
+                        <!-- Nombre -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Nombre</label>
+                            {{ form.nombre }}
+                        </div>
+
+                        <!-- Descripción -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Descripción</label>
+                            {{ form.descripcion }}
+                        </div>
+
+                        <!-- BOTONES -->
+                        <div class="d-flex justify-content-between">
+                            <!-- Cancelar -->
+                            <a href="{% url 'lista_proyectos' %}" class="btn btn-secondary">
+                                Cancelar
+                            </a>
+
+                            <!-- Guardar -->
+                            <button type="submit" class="btn btn-primary">
+                                Guardar
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}Proyectos{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+
+            <!-- TÍTULO -->
+            <h2 class="text-center mb-4 fw-bold">
+                📁 Lista de Proyectos
+            </h2>
+
+            <!-- BOTÓN CREAR -->
+            <div class="text-end mb-3">
+                <a href="{% url 'crear_proyecto' %}" class="btn btn-success">
+                    + Crear Proyecto
+                </a>
+            </div>
+
+            <!-- CARD -->
+            <div class="card shadow-sm">
+                <div class="card-body">
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover align-middle text-center">
+
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nombre</th>
+                                    <th>Descripción</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for proyecto in proyectos %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+
+                                    <td class="fw-semibold">
+                                        {{ proyecto.nombre }}
+                                    </td>
+
+                                    <td>
+                                        {{ proyecto.descripcion }}
+                                    </td>
+
+                                    <td>
+                                        <!-- BOTÓN VER TAREAS CORREGIDO -->
+                                        <a href="{% url 'lista_tareas' proyecto.id %}" 
+                                           class="btn btn-info btn-sm">
+                                            Ver tareas
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                {% empty %}
+                                <tr>
+                                    <td colspan="4" class="text-center text-muted">
+                                        No hay proyectos registrados
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
